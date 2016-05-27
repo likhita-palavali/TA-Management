@@ -177,17 +177,46 @@
 	document.getElementById("btn-save").setAttribute("disabled", true);
 	document.getElementById("btn-cancel").setAttribute("disabled", true);
 
-	document.getElementById("btn-new").addEventListener("click", handleAddRecord);
-	document.getElementById("btn-edit").addEventListener("click", handleUpdateRecord);
-	document.getElementById("btn-save").addEventListener("click", handleSaveRecord);
-	document.getElementById("btn-cancel").addEventListener("click", handleCancelRecord);
-	document.getElementById("btn-delete").addEventListener("click", handleDeleteRecord);
-	
-	document.getElementById("btn-first").addEventListener("click", handleFirstRecord);
-	document.getElementById("btn-last").addEventListener("click", handleLastRecord);
-	document.getElementById("btn-next").addEventListener("click", handleNextRecord);
-	document.getElementById("btn-prev").addEventListener("click", handlePrevRecord);
-	document.getElementById("btn-select").addEventListener("click", handleRandomRecord);
+	document.getElementById("buttongroup").addEventListener("click", handleButtonClick);
 
+	// Use "Event Delegation" to reduce number of event listeners
+	function handleButtonClick(evt){
+		var id = evt.target && evt.target.id;
+
+		if(id){
+			switch(id){
+				case 'btn-new':
+					handleAddRecord(evt);
+					break;
+				case 'btn-edit':
+					handleUpdateRecord(evt);
+					break;
+				case 'btn-save':
+					handleSaveRecord(evt);
+					break;
+				case 'btn-cancel':
+					handleCancelRecord(evt);
+					break;
+				case 'btn-delete':
+					handleDeleteRecord(evt);
+					break;
+				case 'btn-first':
+					handleFirstRecord(evt);
+					break;
+				case 'btn-last':
+					handleLastRecord(evt);
+					break;
+				case 'btn-next':
+					handleNextRecord(evt);
+					break;
+				case 'btn-prev':
+					handlePrevRecord(evt);
+					break;
+				case 'btn-select':
+					handleRandomRecord(evt);
+					break;
+			}
+		}
+	}
 
 })();
